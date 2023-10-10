@@ -1,7 +1,10 @@
+// making interface Animal
 public interface Animal {
   void makeSound();
+  // void for making sound for animal
 }
 
+// implementing lion for 
 public class Lion implements Animal {
   @Override
   public void makeSound() {
