@@ -1,0 +1,108 @@
+package decorator_design_pattern;
+// getting the interface 
+interface Dress
+{
+	 public void assemble();
+}
+// creating the class basicdeess for this and implementing it
+class BasicDress implements Dress 
+{
+	 @Override
+// overriding the functinon void
+	 public void assemble()
+	 {
+	    System.out.println("Basic Dress Features");
+	 }
+// printing out the feautures
+}
+// getting the Dress for implementing
+class DressDecorator implements Dress
+{
+// protected dress for dress
+	 protected Dress dress;
+	 public DressDecorator(Dress c)
+	 {
+	    this.dress = c;
+// dress is a c will be
+	 }
+	  // overriding and getting the assemble function
+	 @Override
+	 public void assemble() 
+	 {
+	    this.dress.assemble();
+	  }
+}
+// exttending DressDecorator for this
+class CasualDress extends DressDecorator 
+{
+	 public CasualDress(Dress c) 
+	 {
+	    super(c);
+	 }
+// being Dress is a c
+	  
+	 @Override
+// overriding liek it
+	 public void assemble() 
+	 {
+	    super.assemble();
+	    System.out.println("Adding Casual Dress Features");
+	 }
+}
+
+// extending once again DressDecorator
+class SportyDress extends DressDecorator 
+{
+	 public SportyDress(Dress c) 
+	 {
+	    super(c);
+	 }
+// overriding the assemble and getting the super
+	 @Override
+	 public void assemble() 
+	 {
+	    super.assemble();
+	    System.out.println("Adding Sporty Dress Features");
+	 }
+}
+// getting the fancy dress
+class FancyDress extends DressDecorator
+{
+	 public FancyDress(Dress c) 
+	 {
+	    super(c);
+	 }
+	  
+	 @Override
+	 public void assemble()
+	 {
+	    super.assemble();
+	    System.out.println("Adding Fancy Dress Features");
+	 }
+}
+// the class DecoratoPatterb
+public class DecoratorPattern
+{
+	  public static void main(String[] args) 
+	  {
+// and getting all of the things that we wrotte
+	      Dress sportyDress = new SportyDress(new BasicDress());
+	      sportyDress.assemble();
+	      System.out.println();
+	     
+	      Dress fancyDress = new FancyDress(new BasicDress());
+	      fancyDress.assemble();
+	      System.out.println();
+	    
+	      Dress casualDress = new CasualDress(new BasicDress());
+	      casualDress.assemble();
+	      System.out.println();
+	    
+	      Dress sportyFancyDress = new SportyDress(new FancyDress(new BasicDress()));
+	      sportyFancyDress.assemble();
+	      System.out.println();
+	    
+	      Dress casualFancyDress = new CasualDress(new FancyDress(new BasicDress()));
+	      casualFancyDress.assemble();
+	  }
+}
